@@ -10,12 +10,17 @@
 
 
 /* ---- Base Rules ---- */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: rgb(136,203,171);
     background: linear-gradient(0deg, rgba(136,203,171,1) 0%, rgba(0,13,60,1) 100%);
     margin: 0;
     font-family: 'Merriweather', serif;
     color: #fff;
+    box-sizing: border-box;
 }
 
 
@@ -60,6 +65,14 @@ section {
     min-height: 80vh;
 }
 
+section:nth-child(odd).active-section {
+    background: linear-gradient(to left, #00000080, #00000000);
+}
+
+section:nth-child(even).active-section {
+    background: linear-gradient(to right, #00000080, #00000000);
+
+}
 
 /* ---- Module Rules ---- */
 
@@ -82,7 +95,8 @@ section {
     color: #000;
 }
 
-.navbar__menu .menu__link:hover {
+.navbar__menu .menu__link:hover,
+.navbar__menu .menu__link.active {
     background: #333;
     color: #fff;
     transition: all ease .3s;
@@ -95,6 +109,37 @@ section {
     top: 0;
     width: 100%;
     z-index: 5;
+    transition: top .6s;
+}
+
+.page__header.hidden {
+    transform: translateY(-100%);
+}
+
+/* Scroll to top btn Styles*/
+.scroll-to-top-btn {
+    position: fixed;
+    bottom: 50px;
+    right: 35px;
+    height: 40px;
+    width: 40px;
+    background-color: #fff;
+    border-radius: 2px;
+    opacity: .8;
+    transition: all .5s;
+    cursor: pointer;
+    text-align: center;
+    line-height: 44px;
+    display: none;
+}
+
+.scroll-to-top-btn:hover {
+    opacity: 1;
+}
+
+.scroll-to-top-btn span:before {
+    color: #000;
+    font-size: 20px;
 }
 
 /* Footer Styles */
